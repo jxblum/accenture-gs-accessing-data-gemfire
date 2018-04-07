@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:gfe="http://www.springframework.org/schema/gemfire" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:gfe-data="http://www.springframework.org/schema/data/gemfire"
+       xsi:schemaLocation="http://www.springframework.org/schema/gemfire http://www.springframework.org/schema/gemfire/spring-gemfire.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/data/gemfire http://www.springframework.org/schema/data/gemfire/spring-data-gemfire.xsd
+		http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <util:properties id="cache-properties">
+        <prop key="log-level">${gemfire.client.error-log:error}</prop>
+    </util:properties>
+
+    <gfe:client-cache pool-name="tpa-pool" properties-ref="cache-properties" />
+    <gfe:pool max-connections="${gemfire.client.max-connections:20}" min-connections="${gemfire.client.min-connections:10}"
+              retry-attempts="${gemfire.client.retry-attempts:10}" read-timeout="${gemfire.client.read-timeout:600000}"
+              subscription-enabled="true" id="tpa-pool">
+        <gfe:locator host="${gemfire.locator.host}" port="${gemfire.locator.port}" />
+    </gfe:pool>
+
+    <gfe-data:function-executions base-package="launcher"></gfe-data:function-executions>
+
+    <gfe:client-region id="region1"                       shortcut="PROXY" pool-name="tpa-pool"/>
+    <gfe:client-region id="region2"                       shortcut="PROXY" />
+    <gfe:client-region id="region3"                       shortcut="PROXY" pool-name="tpa-pool"/>
+
+</beans>

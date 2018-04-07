@@ -1,0 +1,23 @@
+spring:
+  include:
+    errorstack: true
+  batch:
+    job:
+      enabled: false
+logging:
+  level:
+    root: INFO
+    org.hibernate:
+      SQL: DEBUG
+      type: TRACE
+
+gemfire:
+  client:
+    error-log: error
+    max-connections: 30
+    min-connections: 10
+    retry-attempts: 100
+    read-timeout: 30000
+  locator:
+    host: localhost
+    port: 55771
