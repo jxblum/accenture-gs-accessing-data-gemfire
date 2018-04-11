@@ -2,10 +2,9 @@ package server;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.gemstone.gemfire.cache.GemFireCache;
-import com.gemstone.gemfire.cache.execute.FunctionContext;
-import com.gemstone.gemfire.cache.execute.RegionFunctionContext;
-
+import org.apache.geode.cache.GemFireCache;
+import org.apache.geode.cache.execute.FunctionContext;
+import org.apache.geode.cache.execute.RegionFunctionContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -45,7 +44,7 @@ public class GemFireServerApplication {
 	public ReplicatedRegionFactoryBean<Object, Object> regionOne(GemFireCache gemfireCache) {
 
 		ReplicatedRegionFactoryBean<Object, Object> regionOne =
-			new ReplicatedRegionFactoryBean<Object, Object>();
+			new ReplicatedRegionFactoryBean<>();
 
 		regionOne.setCache(gemfireCache);
 		regionOne.setClose(false);
@@ -58,7 +57,7 @@ public class GemFireServerApplication {
 	public ReplicatedRegionFactoryBean<Object, Object> regionTwo(GemFireCache gemfireCache) {
 
 		ReplicatedRegionFactoryBean<Object, Object> regionTwo =
-			new ReplicatedRegionFactoryBean<Object, Object>();
+			new ReplicatedRegionFactoryBean<>();
 
 		regionTwo.setCache(gemfireCache);
 		regionTwo.setClose(false);
@@ -71,7 +70,7 @@ public class GemFireServerApplication {
 	public ReplicatedRegionFactoryBean<Object, Object> regionThree(GemFireCache gemfireCache) {
 
 		ReplicatedRegionFactoryBean<Object, Object> regionThree =
-			new ReplicatedRegionFactoryBean<Object, Object>();
+			new ReplicatedRegionFactoryBean<>();
 
 		regionThree.setCache(gemfireCache);
 		regionThree.setClose(false);
