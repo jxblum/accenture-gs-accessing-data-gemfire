@@ -5,27 +5,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
+//@DependsOn("tpa-pool")
 public class Executor {
 
-    @Autowired
+    @Autowired(required = false)
     FunctionServer1 functionServer1;
 
-    @Autowired
+    @Autowired(required = false)
     FunctionServer2 functionServer2;
 
     @Bean
-    String getExample()
-    {
+    String getExample() {
+
         System.out.println("function server" + functionServer1);
 
         return "test";
     }
 
-
-    public void addEntry()
-    {
+    public void addEntry() {
         functionServer1.addEntry();
     }
-
-
 }
