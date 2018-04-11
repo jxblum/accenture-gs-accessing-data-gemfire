@@ -2,10 +2,11 @@ package launcher;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
 @Component
-//@DependsOn("tpa-pool")
+@DependsOn("tpa-pool")
 public class Executor {
 
     @Autowired(required = false)

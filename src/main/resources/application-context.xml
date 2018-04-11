@@ -29,6 +29,7 @@
     <gfe:client-region id="region1" shortcut="PROXY" pool-name="tpa-pool"/>
     <gfe:client-region id="region2" shortcut="PROXY" pool-name="tpa-pool"/>
     <gfe:client-region id="region3" shortcut="PROXY" pool-name="tpa-pool"/>
+    <gfe:client-region id="region4" shortcut="PROXY" pool-name="tpa-pool"/>
 
     <gfe-data:function-executions base-package="launcher"/>
 
