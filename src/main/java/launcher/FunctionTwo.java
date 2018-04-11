@@ -3,10 +3,10 @@ package launcher;
 import org.springframework.data.gemfire.function.annotation.FunctionId;
 import org.springframework.data.gemfire.function.annotation.OnRegion;
 
-@OnRegion(region="region2")
-public interface FunctionServer1 {
+@OnRegion(region = "region1")
+public interface FunctionTwo {
 
-    @FunctionId("function1")
-    void addEntry();
+    @FunctionId("function2")
+    void deleteRegion();
 
 }
