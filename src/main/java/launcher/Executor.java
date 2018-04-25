@@ -8,20 +8,20 @@ import org.springframework.stereotype.Component;
 public class Executor {
 
     @Autowired(required = false)
-    FunctionServer1 functionServer1;
+	FunctionOne functionOne;
 
     @Autowired(required = false)
-    FunctionServer2 functionServer2;
+    FunctionTwo functionTwo;
 
     @Bean
     String getExample() {
 
-        System.out.println("function server" + functionServer1);
+        System.out.println("Function Server " + this.functionOne);
 
         return "test";
     }
 
     public void addEntry() {
-        functionServer1.addEntry();
+        this.functionOne.addEntry();
     }
 }
