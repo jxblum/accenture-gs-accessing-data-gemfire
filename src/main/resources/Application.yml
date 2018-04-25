@@ -20,4 +20,4 @@ gemfire:
     read-timeout: 30000
   locator:
     host: localhost
-    port: 55771
+    port: 10334

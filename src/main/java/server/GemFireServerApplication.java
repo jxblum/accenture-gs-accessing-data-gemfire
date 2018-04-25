@@ -37,8 +37,7 @@ public class GemFireServerApplication {
 	@EnableLocator
 	@EnableManager
 	@Profile("locator-manager")
-	static class LocatorManagerConfiguration {
-	}
+	static class LocatorManagerConfiguration { }
 
 	@Bean("region1")
 	public ReplicatedRegionFactoryBean<Object, Object> regionOne(GemFireCache gemfireCache) {

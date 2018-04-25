@@ -11,9 +11,11 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
 ">
 
-    <util:properties id="cache-properties">
+    <util:properties id="gemfireProperties">
         <prop key="log-level">${gemfire.client.error-log:error}</prop>
     </util:properties>
+
+    <gfe:client-cache properties-ref="gemfireProperties" pool-name="tpa-pool"/>
 
     <gfe:pool id="tpa-pool"
               max-connections="${gemfire.client.max-connections:20}"
@@ -23,8 +25,6 @@
               subscription-enabled="true">
         <gfe:locator host="${gemfire.locator.host}" port="${gemfire.locator.port}" />
     </gfe:pool>
-
-    <gfe:client-cache pool-name="tpa-pool" properties-ref="cache-properties"/>
 
     <gfe:client-region id="region1" shortcut="PROXY" pool-name="tpa-pool"/>
     <gfe:client-region id="region2" shortcut="PROXY" pool-name="tpa-pool"/>
